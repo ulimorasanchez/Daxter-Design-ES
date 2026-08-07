@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daxter Design — Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="nav-pill">
+      <a href="index.html" class="brand">
+        <img src="img/daxterlogo.jpg" class="brand-icon" alt="Daxter Design logo">
+        <span>Daxter Design</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="shop.html">Sticker Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu"></button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>Art, animation, and stickers from Daxter Design.</h1>
+        <p class="hero-sub">
+          Animated stories, character art, and real sticker designs—everything in one place.
+        </p>
+        <div class="hero-actions">
+          <a href="videos.html" class="btn btn-primary">Watch videos</a>
+          <a href="shop.html" class="btn btn-ghost">Visit sticker shop</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="img/waving.gif" alt="Ulises photo" class="hero-photo">
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED VIDEOS -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>Featured Videos</h2>
+      </div>
+      <div id="featuredVideo"></div>
+    </div>
+  </section>
+
+  <!-- NEW FEATURED STICKER GALLERY -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>Featured Stickers</h2>
+      </div>
+
+      <div class="featured-sticker-gallery-wrapper">
+        <button id="prevFeaturedSticker" class="btn btn-sm btn-ghost">Prev</button>
+
+        <div id="featuredStickerGallery" class="featured-sticker-gallery">
+          <!-- Sticker injected here -->
+        </div>
+
+        <button id="nextFeaturedSticker" class="btn btn-sm btn-ghost">Next</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="footer"></footer>
+
+<script src="js/shared.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/footer.js"></script>
+<script>
+  document.getElementById("brandBlob").innerHTML = heroBlip();
+</script>
+
+  <script>
+    const featured = window.DEFAULT_VIDEOS.filter(v => v.featured);
+const featuredVideo = document.getElementById("featuredVideo");
+
+if (featured.length > 0) {
+  const v = featured[0];
+  featuredVideo.innerHTML = `
+    <div class="video-card">
+      <div class="thumb">
+        <img src="${v.thumb}" alt="${v.title}">
+      </div>
+      <h3>${v.title}</h3>
+      <p class="desc">${v.description}</p>
+      <a href="${v.url}" target="_blank" class="btn btn-primary">Watch</a>
+    </div>
+  `;
+}
+</script>
+
+  <script>
+  const stickerGallery = document.getElementById("featuredStickerGallery");
+  const stickers = window.DEFAULT_STICKERS;
+  let currentSticker = 0;
+  let autoRotate;
+
+  function renderSticker(index) {
+    const s = stickers[index];
+
+    stickerGallery.innerHTML = "";
+
+    const img = document.createElement("img");
+    img.src = s.img;
+    img.alt = s.name;
+
+    // Click → open Etsy
+    img.onclick = () => window.open(s.etsy, "_blank");
+
+    stickerGallery.appendChild(img);
+  }
+
+  function nextSticker() {
+    currentSticker = (currentSticker + 1) % stickers.length;
+    renderSticker(currentSticker);
+  }
+
+  function prevSticker() {
+    currentSticker = (currentSticker - 1 + stickers.length) % stickers.length;
+    renderSticker(currentSticker);
+  }
+
+  // Auto rotate every 4 seconds
+  function startAutoRotate() {
+    autoRotate = setInterval(nextSticker, 4000);
+  }
+
+  function stopAutoRotate() {
+    clearInterval(autoRotate);
+  }
+
+  // Buttons
+  document.getElementById("nextFeaturedSticker").onclick = () => {
+    stopAutoRotate();
+    nextSticker();
+    startAutoRotate();
+  };
+
+  document.getElementById("prevFeaturedSticker").onclick = () => {
+    stopAutoRotate();
+    prevSticker();
+    startAutoRotate();
+  };
+
+  // Start
+  renderSticker(currentSticker);
+  startAutoRotate();
+</script>
+
+
+
+</body>
+</html>
