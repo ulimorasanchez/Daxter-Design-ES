@@ -1,0 +1,642 @@
+/* ===========================================================
+   GLOBAL RESET & THEME
+=========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  margin: 0;
+  background: var(--grad-bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* ===========================================================
+   DESIGN TOKENS
+=========================================================== */
+:root {
+  --purple-1: #A06BFF;
+  --purple-2: #7A4DCC;
+  --purple-3: #CFA8FF;
+  --purple-4: #3A1F5D;
+
+  --white: #FFFFFF;
+  --gray-soft: #CFC6E8;
+  --gray-dark: #1E1A29;
+
+  --mint: #3DDC97;
+
+  --radius-lg: 28px;
+  --radius-md: 20px;
+  --radius-sm: 12px;
+
+  --shadow-soft: 0 8px 24px rgba(160,107,255,0.25), 0 2px 6px rgba(0,0,0,0.2);
+
+  --grad-bg: linear-gradient(135deg, #1E1A29 0%, #3A1F5D 40%, #A06BFF 100%);
+  --grad-card: linear-gradient(145deg, #2A1F3D, #3A1F5D);
+  --grad-nav: linear-gradient(135deg, #1E1A29, #3A1F5D);
+  --grad-button: linear-gradient(135deg, #7A4DCC, #A06BFF);
+
+  --font-display: 'Baloo 2', ui-rounded, system-ui, sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+}
+
+/* ===========================================================
+   CONTAINER
+=========================================================== */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===========================================================
+   NAVIGATION
+=========================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 16px 0 0;
+}
+
+.nav-pill {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--grad-nav);
+  border: 3px solid var(--purple-1);
+  border-radius: 999px;
+  padding: 10px 12px 10px 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  color: #fff;
+}
+
+.brand-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.4));
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.nav-links a {
+  font-family: var(--font-display);
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 999px;
+  transition: background .15s ease;
+  color: #fff;
+}
+
+.nav-links a.active {
+  background: var(--purple-1);
+  color: var(--gray-dark);
+}
+
+/* ===========================================================
+   MOBILE NAVIGATION
+=========================================================== */
+.nav-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .nav-toggle {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .nav-toggle svg {
+    width: 28px;
+    height: 28px;
+    stroke: white;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--grad-card);
+    padding: 15px;
+    border-radius: 10px;
+    border: 3px solid var(--purple-1);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+}
+
+/* ===========================================================
+   PAGE HERO
+=========================================================== */
+.page-hero {
+  text-align: center;
+  padding: 70px 20px 40px;
+}
+
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.page-hero p {
+  font-size: 18px;
+  color: var(--gray-soft);
+}
+
+/* ===========================================================
+   HOME HERO
+=========================================================== */
+.hero {
+  padding: 64px 0 40px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 6vw, 68px);
+  color: #fff;
+}
+
+.hero-sub {
+  font-size: 19px;
+  color: var(--gray-soft);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.hero-art .brand-icon {
+  width: 140px;
+  height: 140px;
+}
+
+/* ===========================================================
+   BUTTONS
+=========================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 3px solid var(--purple-1);
+  background: var(--grad-button);
+  color: var(--white);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.btn:hover {
+  transform: translate(-2px,-3px) rotate(-1deg);
+  box-shadow: 6px 7px 0 rgba(0,0,0,0.35);
+}
+
+.btn-primary {
+  background: var(--grad-button);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--purple-1);
+  color: var(--purple-1);
+}
+
+.btn-sm {
+  padding: 9px 18px;
+  font-size: 14px;
+}
+
+/* ===========================================================
+   SECTION HEADERS
+=========================================================== */
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* ===========================================================
+   VIDEO CARDS
+=========================================================== */
+.video-card {
+  background: var(--grad-card);
+  border: 3px solid var(--purple-1);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 30px;
+  transition: transform .3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-6px);
+}
+
+.video-card .thumb {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 2px solid var(--purple-1);
+  aspect-ratio: 16/9;
+  margin-bottom: 12px;
+}
+
+.video-card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+
+.video-card:hover .thumb img {
+  transform: scale(1.06);
+}
+
+.video-card h3 {
+  font-size: 19px;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.video-card .desc {
+  font-size: 14px;
+  color: var(--gray-soft);
+  margin-bottom: 10px;
+}
+
+/* ===========================================================
+   GRID LAYOUTS
+=========================================================== */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 24px;
+}
+
+@media (max-width: 980px) {
+  .grid-4 { grid-template-columns: repeat(2,1fr); }
+}
+
+@media (max-width: 600px) {
+  .grid-4 { grid-template-columns: 1fr; }
+}
+
+/* ===========================================================
+   STICKER GALLERY (Home Page)
+=========================================================== */
+.sticker-gallery {
+  width: 100%;
+  max-width: 240px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.sticker-slider {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  transition: transform 0.4s ease-in-out;
+  touch-action: none;
+}
+
+.sticker-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sticker-slide img {
+  width: 200px;
+  border-radius: 10px;
+}
+
+
+/* Featured Sticker Gallery */
+.featured-sticker-gallery {
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  height: 260px;
+}
+
+.featured-sticker-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 3px solid var(--purple-1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  animation: fadeSticker 4s linear forwards;
+}
+
+@keyframes fadeSticker {
+  0% { opacity: 0; transform: scale(0.95); }
+  10% { opacity: 1; transform: scale(1); }
+  90% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.95); }
+}
+
+/* ===========================================================
+   FEATURED STICKER GALLERY (Auto-Rotate + Buttons)
+=========================================================== */
+
+.featured-sticker-gallery-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.featured-sticker-gallery {
+  width: 100%;
+  max-width: 260px;
+  height: 260px;
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.featured-sticker-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 3px solid var(--purple-1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  animation: fadeSticker 4s linear forwards;
+  cursor: pointer; /* click to open Etsy */
+}
+
+@keyframes fadeSticker {
+  0% { opacity: 0; transform: scale(0.95); }
+  10% { opacity: 1; transform: scale(1); }
+  90% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.95); }
+}
+
+
+/* ===========================================================
+   STICKER CARDS (Shop Page)
+=========================================================== */
+.sticker-card {
+  background: var(--grad-card);
+  border: 3px solid var(--purple-1);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  transition: transform .3s ease;
+}
+
+.sticker-card:hover {
+  transform: translateY(-6px);
+}
+
+.shop-card {
+  text-align: center;
+}
+
+.sticker-thumb {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--purple-4);
+  border: 2px solid var(--purple-1);
+  aspect-ratio: 1/1;
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sticker-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* ===========================================================
+   ABOUT PAGE
+=========================================================== */
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.blob-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wobble {
+  animation: wobble 3s ease-in-out infinite;
+}
+
+@keyframes wobble {
+  0%,100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+/* ===========================================================
+   SUPPORT PAGE CHECKLIST
+=========================================================== */
+.checklist {
+  list-style: none;
+  padding-left: 0;
+  margin: 20px 0;
+}
+
+.checklist li {
+  margin-bottom: 10px;
+  padding-left: 24px;
+  position: relative;
+  font-size: 16px;
+  color: #fff;
+}
+
+.checklist li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--mint);
+  font-weight: 700;
+}
+
+/* ===========================================================
+   CONTACT FORM
+=========================================================== */
+.form-card {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #ffffff10;
+  padding: 32px;
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+}
+
+.input-field,
+.textarea-field {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #c7d2fe;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.textarea-field {
+  height: 150px;
+  resize: none;
+}
+
+/* ===========================================================
+   BACKGROUND BLOBS (ENABLED)
+=========================================================== */
+.bg-blob-field {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.bgb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+  animation: blobFloat 12s ease-in-out infinite;
+}
+
+@keyframes blobFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-40px); }
+}
+
+/* ===========================================================
+   FOOTER
+=========================================================== */
+.site-footer {
+  background: linear-gradient(135deg, #2A1F3D 0%, #3A1F5D 60%, #7A4DCC 100%);
+  padding: 40px 0 30px;
+  margin-top: 80px;
+  color: #fff;
+}
+
+.footer-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.footer-social img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(1.3);
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  transition: opacity .2s ease, transform .2s ease;
+  color: #fff;
+}
+
+.social-link:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.85;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  color: #fff;
+}
