@@ -138,6 +138,7 @@ body {
 /* ===========================================================
    MOBILE NAVIGATION
 =========================================================== */
+
 .nav-toggle {
   display: none;
 }
@@ -161,47 +162,44 @@ body {
     stroke: white;
   }
 
+  /* ⭐ MERGED FINAL VERSION — smooth, scrollable, not tall */
   .nav-links {
-    display: none;
+    display: none;              /* hidden by default */
     flex-direction: column;
     gap: 10px;
     background: var(--grad-card);
     padding: 15px;
     border-radius: 10px;
     border: 3px solid var(--purple-1);
+
+    /* ⭐ Prevent tall menu */
+    max-height: 70vh;
+
+    /* ⭐ Allow scrolling */
+    overflow-y: auto;
+
+    /* ⭐ Better spacing */
+    padding-top: 10px;
+    padding-bottom: 20px;
+
+    /* ⭐ Smooth animation */
+    transition: max-height 0.3s ease;
   }
 
   .nav-links.open {
     display: flex;
-  }
-
-  /* ⭐ Smooth mobile scrolling + better spacing */
-  .nav-links {
-    max-height: 70vh;
-    overflow-y: auto;
-    padding-bottom: 20px;
-    padding-top: 10px;
+    max-height: 70vh;           /* animated open height */
   }
 
   .nav-links li {
-    margin: 12px 0;
+    margin: 12px 0;             /* spacing between items */
   }
 
   .nav-pill {
-    align-items: flex-start;
-  }
-
-  /* ⭐ Optional slide-down animation */
-  .nav-links {
-    transition: max-height 0.3s ease;
-    max-height: 0;
-    overflow: hidden;
-  }
-
-  .nav-links.open {
-    max-height: 70vh;
+    align-items: flex-start;    /* prevents stretching */
   }
 }
+
 
 /* ===========================================================
    PAGE HERO
