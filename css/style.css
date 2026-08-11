@@ -698,3 +698,22 @@ body {
   gap: 18px;
   color: #fff;
 }
+/* ⭐ MOBILE FOOTER FIX — prevents cut-off social icons */
+@media (max-width: 768px) {
+  .footer-grid {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .footer-social {
+    flex-wrap: wrap;        /* allows icons to wrap instead of cut */
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .social-link {
+    justify-content: center;
+  }
+}
+
