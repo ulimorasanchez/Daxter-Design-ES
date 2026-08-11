@@ -113,6 +113,21 @@ body {
   color: var(--gray-dark);
 }
 
+.btn-lang {
+  background: transparent;
+  border: 2px solid var(--purple-1);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-lang:hover {
+  background: var(--purple-1);
+}
+
+
 /* ===========================================================
    MOBILE NAVIGATION
 =========================================================== */
@@ -640,3 +655,4 @@ body {
   gap: 18px;
   color: #fff;
 }
+
