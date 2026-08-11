@@ -19,19 +19,27 @@ window.LANG = {
     // VIDEOS PAGE
     videosTitle: "Videos",
     videosDesc: "Watch all animated shorts and character clips.",
+    shortsTitle: "Shorts",
+    shortsDesc: "Short animations and creative projects from Daxter Design.",
 
     // SHOP PAGE
     shopTitle: "Sticker Shop",
     shopDesc: "Browse all sticker designs available on Etsy.",
+    shopAll: "All Stickers",
 
     // ABOUT PAGE
-    aboutTitle: "About the Creator",
-    aboutBio: "Daxter Design creates animated stories, characters, and sticker art.",
-    aboutOrigin: "Learn how the characters and art style were created.",
+    aboutTitle: "About Daxter Design",
+    aboutBio: "Art, animation, stickers, and creative chaos — all crafted with passion.",
+    aboutOrigin: "The Artist Behind the Design",
+    aboutOriginDesc: "Daxter Design is a creative space built around art, animation, and character design.",
 
     // CONTACT PAGE
-    contactTitle: "Contact",
-    contactDesc: "Reach out for commissions, collaborations, or questions.",
+    contactTitle: "Contact Daxter Design",
+    contactDesc: "Have a question, request, or just want to say hi? Send me a message.",
+    contactNameLabel: "Name",
+    contactEmailLabel: "Email",
+    contactMessageLabel: "Message",
+    contactSendBtn: "Send Message",
 
     // SUPPORT PAGE
     supportTitle: "Support the Creator",
@@ -59,19 +67,27 @@ window.LANG = {
     // VIDEOS PAGE
     videosTitle: "Videos",
     videosDesc: "Mira todos los cortos animados y clips de personajes.",
+    shortsTitle: "Shorts",
+    shortsDesc: "Animaciones cortas y proyectos creativos de Daxter Design.",
 
     // SHOP PAGE
     shopTitle: "Tienda de Stickers",
     shopDesc: "Explora todos los diseños disponibles en Etsy.",
+    shopAll: "Todos los Stickers",
 
     // ABOUT PAGE
-    aboutTitle: "Sobre el Creador",
-    aboutBio: "Daxter Design crea historias animadas, personajes y arte de stickers.",
-    aboutOrigin: "Conoce cómo se crearon los personajes y el estilo artístico.",
+    aboutTitle: "Sobre Daxter Design",
+    aboutBio: "Arte, animación, stickers y caos creativo — todo hecho con pasión.",
+    aboutOrigin: "El Artista Detrás del Diseño",
+    aboutOriginDesc: "Daxter Design es un espacio creativo construido alrededor del arte, la animación y el diseño de personajes.",
 
     // CONTACT PAGE
-    contactTitle: "Contacto",
-    contactDesc: "Escríbeme para comisiones, colaboraciones o preguntas.",
+    contactTitle: "Contactar a Daxter Design",
+    contactDesc: "¿Tienes una pregunta, solicitud o solo quieres saludar? Envíame un mensaje.",
+    contactNameLabel: "Nombre",
+    contactEmailLabel: "Correo electrónico",
+    contactMessageLabel: "Mensaje",
+    contactSendBtn: "Enviar mensaje",
 
     // SUPPORT PAGE
     supportTitle: "Apoyo al Creador",
