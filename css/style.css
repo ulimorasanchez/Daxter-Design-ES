@@ -135,10 +135,7 @@ body {
 }
 
 
-/* ===========================================================
-   MOBILE NAVIGATION
-=========================================================== */
-
+/* MOBILE NAV — MODERN SLIDE DOWN */
 .nav-toggle {
   display: none;
 }
@@ -162,43 +159,43 @@ body {
     stroke: white;
   }
 
-  /* ⭐ MERGED FINAL VERSION — smooth, scrollable, not tall */
+  /* Modern mobile menu */
   .nav-links {
-    display: none;              /* hidden by default */
+    position: absolute;
+    top: 70px;                 /* below header */
+    right: 20px;
+    left: 20px;
+
+    display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
+
     background: var(--grad-card);
-    padding: 15px;
-    border-radius: 10px;
+    border-radius: 12px;
     border: 3px solid var(--purple-1);
 
-    /* ⭐ Prevent tall menu */
-    max-height: 70vh;
+    padding: 18px;
 
-    /* ⭐ Allow scrolling */
-    overflow-y: auto;
-
-    /* ⭐ Better spacing */
-    padding-top: 10px;
-    padding-bottom: 20px;
-
-    /* ⭐ Smooth animation */
-    transition: max-height 0.3s ease;
+    /* Animation */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
   }
 
   .nav-links.open {
-    display: flex;
-    max-height: 70vh;           /* animated open height */
+    max-height: 70vh;         /* smooth slide-down */
+    overflow-y: auto;         /* scroll if needed */
   }
 
   .nav-links li {
-    margin: 12px 0;             /* spacing between items */
+    margin: 6px 0;
   }
 
   .nav-pill {
-    align-items: flex-start;    /* prevents stretching */
+    position: relative;
   }
 }
+
 
 
 /* ===========================================================
