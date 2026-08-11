@@ -255,7 +255,9 @@ function confettiBurst(x, y){
 document.addEventListener("DOMContentLoaded", () => { initNav(); injectBgBlobs(); });
 
 /* ---------------- BUTTON LANGUAGE ---------------- */
-let currentLang = "en";
+
+// Load saved language or default to English
+let currentLang = localStorage.getItem("siteLang") || "en";
 
 function applyLanguage(lang) {
   const t = window.LANG[lang];
@@ -285,11 +287,16 @@ function applyLanguage(lang) {
     document.getElementById("videosTitle").textContent = t.videosTitle;
     document.getElementById("videosDesc").textContent = t.videosDesc;
   }
+  if (document.getElementById("shortsTitle")) {
+    document.getElementById("shortsTitle").textContent = t.shortsTitle;
+    document.getElementById("shortsDesc").textContent = t.shortsDesc;
+  }
 
   // SHOP PAGE
   if (document.getElementById("shopTitle")) {
     document.getElementById("shopTitle").textContent = t.shopTitle;
     document.getElementById("shopDesc").textContent = t.shopDesc;
+    document.getElementById("shopAll").textContent = t.shopAll;
   }
 
   // ABOUT PAGE
@@ -297,12 +304,17 @@ function applyLanguage(lang) {
     document.getElementById("aboutTitle").textContent = t.aboutTitle;
     document.getElementById("aboutBio").textContent = t.aboutBio;
     document.getElementById("aboutOrigin").textContent = t.aboutOrigin;
+    document.getElementById("aboutOriginDesc").textContent = t.aboutOriginDesc;
   }
 
   // CONTACT PAGE
   if (document.getElementById("contactTitle")) {
     document.getElementById("contactTitle").textContent = t.contactTitle;
     document.getElementById("contactDesc").textContent = t.contactDesc;
+    document.getElementById("contactNameLabel").textContent = t.contactNameLabel;
+    document.getElementById("contactEmailLabel").textContent = t.contactEmailLabel;
+    document.getElementById("contactMessageLabel").textContent = t.contactMessageLabel;
+    document.getElementById("contactSendBtn").textContent = t.contactSendBtn;
   }
 
   // SUPPORT PAGE
@@ -311,19 +323,29 @@ function applyLanguage(lang) {
     document.getElementById("supportDesc").textContent = t.supportDesc;
     document.getElementById("supportChecklist").textContent = t.supportChecklist;
   }
+
+  // Update flag + button text
+  const flag = document.getElementById("langFlag");
+  if (flag) {
+    flag.src = lang === "en" ? "img/flag_es.svg" : "img/flag_en.svg";
+  }
+
+  const btn = document.getElementById("langToggle");
+  if (btn) {
+    btn.textContent = lang === "en" ? "ES" : "EN";
+    btn.prepend(flag);
+  }
 }
 
-document.getElementById("langToggle").addEventListener("click", () => {
+// Toggle language
+document.getElementById("langToggle")?.addEventListener("click", () => {
   currentLang = currentLang === "en" ? "es" : "en";
 
-  const flag = document.getElementById("langFlag");
-  flag.src = currentLang === "en" ? "img/flag_es.svg" : "img/flag_en.svg";
-
-  document.getElementById("langToggle").textContent = currentLang === "en" ? "ES" : "EN";
-  document.getElementById("langToggle").prepend(flag);
+  // Save language preference
+  localStorage.setItem("siteLang", currentLang);
 
   applyLanguage(currentLang);
 });
 
-// Apply default language on load
+// Apply saved language on load
 applyLanguage(currentLang);
