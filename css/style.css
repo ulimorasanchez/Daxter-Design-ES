@@ -4,13 +4,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+
+/* ⭐ MOBILE VIEWPORT FIX */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  min-height: 100svh;              /* FIXES WHITE BARS */
+}
+
 body {
   margin: 0;
   background: var(--grad-bg);
   color: var(--white);
   font-family: var(--font-body);
   overflow-x: hidden;
+
+  /* ⭐ SAFARI HEIGHT FIX */
+  height: -webkit-fill-available;
 }
 
 /* ===========================================================
@@ -55,11 +65,19 @@ body {
 /* ===========================================================
    NAVIGATION
 =========================================================== */
+
+/* ⭐ FIX HEADER SPACING ON MOBILE */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  padding: 16px 0 0;
+  padding: 0;                     /* REMOVE EXTRA TOP SPACE */
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-top: 90px;            /* PREVENT OVERLAP */
+  }
 }
 
 .nav-pill {
@@ -126,6 +144,7 @@ body {
 .btn-lang:hover {
   background: var(--purple-1);
 }
+
 .flag-icon {
   width: 18px;
   height: 18px;
@@ -133,7 +152,6 @@ body {
   border-radius: 3px;
   vertical-align: middle;
 }
-
 
 /* ===========================================================
    MODERN MOBILE NAV — CRYSTAL GLASS + SMOOTH
@@ -145,7 +163,6 @@ body {
 
 @media (max-width: 768px) {
 
-  /* Hamburger button */
   .nav-toggle {
     display: flex;
     width: 40px;
@@ -164,7 +181,6 @@ body {
     stroke: white;
   }
 
-  /* Crystal glass mobile menu */
   .nav-links {
     position: absolute;
     top: 70px;
@@ -177,7 +193,6 @@ body {
 
     padding: 18px;
 
-    /* ⭐ Crystal glass effect */
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -185,13 +200,11 @@ body {
     border-radius: 14px;
     border: 1px solid rgba(255, 255, 255, 0.25);
 
-    /* ⭐ Smooth animation */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.35s ease, opacity 0.25s ease;
     opacity: 0;
 
-    /* Prevent “cortado” glitch */
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
   }
 
@@ -209,8 +222,6 @@ body {
     position: relative;
   }
 }
-
-
 
 /* ===========================================================
    PAGE HERO
@@ -412,7 +423,6 @@ body {
   border-radius: 10px;
 }
 
-
 /* Featured Sticker Gallery */
 .featured-sticker-gallery {
   width: 100%;
@@ -475,7 +485,7 @@ body {
   left: 0;
   opacity: 0;
   animation: fadeSticker 4s linear forwards;
-  cursor: pointer; /* click to open Etsy */
+  cursor: pointer;
 }
 
 @keyframes fadeSticker {
@@ -484,7 +494,6 @@ body {
   90% { opacity: 1; transform: scale(1); }
   100% { opacity: 0; transform: scale(0.95); }
 }
-
 
 /* ===========================================================
    STICKER CARDS (Shop Page)
@@ -658,6 +667,7 @@ body {
   gap: 10px;
   font-family: var(--font-display);
   font-size: 20px;
+  font-weight:
   font-weight: 700;
   color: #fff;
 }
@@ -698,4 +708,3 @@ body {
   gap: 18px;
   color: #fff;
 }
-
