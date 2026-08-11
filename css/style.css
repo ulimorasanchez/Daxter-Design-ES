@@ -126,6 +126,13 @@ body {
 .btn-lang:hover {
   background: var(--purple-1);
 }
+.flag-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
 
 
 /* ===========================================================
