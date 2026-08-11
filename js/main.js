@@ -256,8 +256,29 @@ document.addEventListener("DOMContentLoaded", () => { initNav(); injectBgBlobs()
 
 /* ---------------- BUTTON LANGUAGE ---------------- */
 
-// Load saved language or default to English
-let currentLang = localStorage.getItem("siteLang") || "en";
+// Detect browser language on first visit
+function detectBrowserLanguage() {
+  const browserLang = navigator.language || navigator.userLanguage;
+
+  // Normalize: "es-ES" → "es", "en-US" → "en"
+  const short = browserLang.split("-")[0];
+
+  // Only auto-detect if user has NOT chosen a language before
+  if (!localStorage.getItem("siteLang")) {
+    if (short === "es") {
+      localStorage.setItem("siteLang", "es");
+      return "es";
+    }
+    localStorage.setItem("siteLang", "en");
+    return "en";
+  }
+
+  // If user already chose a language, use that
+  return localStorage.getItem("siteLang");
+}
+
+// Load saved or auto-detected language
+let currentLang = detectBrowserLanguage();
 
 function applyLanguage(lang) {
   const t = window.LANG[lang];
@@ -337,15 +358,15 @@ function applyLanguage(lang) {
   }
 }
 
-// Toggle language
+// Toggle language manually
 document.getElementById("langToggle")?.addEventListener("click", () => {
   currentLang = currentLang === "en" ? "es" : "en";
 
-  // Save language preference
+  // Save user preference
   localStorage.setItem("siteLang", currentLang);
 
   applyLanguage(currentLang);
 });
 
-// Apply saved language on load
+// Apply language on page load
 applyLanguage(currentLang);
