@@ -16,25 +16,36 @@
         <img src="img/daxterlogo.jpg" class="brand-icon" alt="Daxter Design logo">
         <span>Daxter Design</span>
       </a>
+
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="videos.html">Videos</a></li>
-        <li><a href="shop.html">Sticker Shop</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="support.html" class="active">Support</a></li>
+        <li><a id="navHome" href="index.html">Home</a></li>
+        <li><a id="navVideos" href="videos.html">Videos</a></li>
+        <li><a id="navShop" href="shop.html">Sticker Shop</a></li>
+        <li><a id="navAbout" href="about.html">About</a></li>
+        <li><a id="navContact" href="contact.html">Contact</a></li>
+        <li><a id="navSupport" href="support.html" class="active">Support</a></li>
       </ul>
+
+      <!-- Language Toggle -->
+      <button id="langToggle" class="btn-lang">
+        <img id="langFlag" src="img/flag_es.svg" alt="ES" class="flag-icon">
+        ES
+      </button>
+
       <button class="nav-toggle" aria-label="Menu"></button>
     </nav>
   </div>
 </header>
 
 <main>
+
+  <!-- HERO -->
   <section class="page-hero">
-    <h1>Support Daxter Design</h1>
-    <p>Your support helps keep the art, animations, and stickers coming.</p>
+    <h1 id="supportTitle">Support Daxter Design</h1>
+    <p id="supportDesc">Your support helps keep the art, animations, and stickers coming.</p>
   </section>
 
+  <!-- KO-FI -->
   <section>
     <div class="container">
       <div class="form-card text-center">
@@ -47,28 +58,31 @@
     </div>
   </section>
 
+  <!-- WHY SUPPORT -->
   <section>
     <div class="container">
-      <h2>Why Support?</h2>
+      <h2 id="supportChecklist">Support Checklist</h2>
       <p>Daxter Design is powered by creativity — animations, stickers, characters, and community-driven projects. Your support helps fund:</p>
+
       <ul class="checklist">
         <li>New sticker designs</li>
         <li>Animation tools and software</li>
         <li>Studio upgrades</li>
         <li>Time to create more content</li>
       </ul>
+
       <p>Even small donations make a huge difference and help keep the brand growing.</p>
     </div>
   </section>
+
 </main>
 
 <footer class="site-footer" id="footer"></footer>
 
 <script src="js/shared.js"></script>
 <script src="js/footer.js"></script>
-<script>
-  document.getElementById("brandBlob")?.innerHTML = heroBlip();
-</script>
+<script src="js/lang.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>
