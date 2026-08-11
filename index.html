@@ -25,9 +25,8 @@
         <li><a href="support.html">Support</a></li>
       </ul>
 
-      <!-- ⭐ ADD THIS BUTTON HERE -->
+      <!-- Language Toggle -->
       <button id="langToggle" class="btn-lang">ES</button>
-      <!-- ⭐ END -->
 
       <button class="nav-toggle" aria-label="Menu"></button>
     </nav>
@@ -41,15 +40,16 @@
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <h1>Art, animation, and stickers from Daxter Design.</h1>
-        <p class="hero-sub">
+        <h1 id="heroTitle">Art, animation, and stickers from Daxter Design.</h1>
+        <p id="heroSub" class="hero-sub">
           Animated stories, character art, and real sticker designs—everything in one place.
         </p>
         <div class="hero-actions">
-          <a href="videos.html" class="btn btn-primary">Watch videos</a>
-          <a href="shop.html" class="btn btn-ghost">Visit sticker shop</a>
+          <a id="watchVideos" href="videos.html" class="btn btn-primary">Watch videos</a>
+          <a id="visitShop" href="shop.html" class="btn btn-ghost">Visit sticker shop</a>
         </div>
       </div>
+
       <div class="hero-art">
         <img src="img/waving.gif" alt="Ulises photo" class="hero-photo">
       </div>
@@ -60,17 +60,17 @@
   <section>
     <div class="container">
       <div class="section-head">
-        <h2>Featured Videos</h2>
+        <h2 id="featuredVideos">Featured Videos</h2>
       </div>
       <div id="featuredVideo"></div>
     </div>
   </section>
 
-  <!-- NEW FEATURED STICKER GALLERY -->
+  <!-- FEATURED STICKERS -->
   <section>
     <div class="container">
       <div class="section-head">
-        <h2>Featured Stickers</h2>
+        <h2 id="featuredStickers">Featured Stickers</h2>
       </div>
 
       <div class="featured-sticker-gallery-wrapper">
@@ -89,34 +89,35 @@
 
 <footer class="site-footer" id="footer"></footer>
 
+<!-- SCRIPTS -->
 <script src="js/shared.js"></script>
 <script src="js/data.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/main.js"></script>
 <script src="js/footer.js"></script>
+
+<!-- Featured Video Loader -->
 <script>
-  document.getElementById("brandBlob").innerHTML = heroBlip();
-</script>
+  const featured = window.DEFAULT_VIDEOS.filter(v => v.featured);
+  const featuredVideo = document.getElementById("featuredVideo");
 
-  <script>
-    const featured = window.DEFAULT_VIDEOS.filter(v => v.featured);
-const featuredVideo = document.getElementById("featuredVideo");
-
-if (featured.length > 0) {
-  const v = featured[0];
-  featuredVideo.innerHTML = `
-    <div class="video-card">
-      <div class="thumb">
-        <img src="${v.thumb}" alt="${v.title}">
+  if (featured.length > 0) {
+    const v = featured[0];
+    featuredVideo.innerHTML = `
+      <div class="video-card">
+        <div class="thumb">
+          <img src="${v.thumb}" alt="${v.title}">
+        </div>
+        <h3>${v.title}</h3>
+        <p class="desc">${v.description}</p>
+        <a href="${v.url}" target="_blank" class="btn btn-primary">Watch</a>
       </div>
-      <h3>${v.title}</h3>
-      <p class="desc">${v.description}</p>
-      <a href="${v.url}" target="_blank" class="btn btn-primary">Watch</a>
-    </div>
-  `;
-}
+    `;
+  }
 </script>
 
-  <script>
+<!-- Featured Sticker Gallery -->
+<script>
   const stickerGallery = document.getElementById("featuredStickerGallery");
   const stickers = window.DEFAULT_STICKERS;
   let currentSticker = 0;
@@ -124,14 +125,11 @@ if (featured.length > 0) {
 
   function renderSticker(index) {
     const s = stickers[index];
-
     stickerGallery.innerHTML = "";
 
     const img = document.createElement("img");
     img.src = s.img;
     img.alt = s.name;
-
-    // Click → open Etsy
     img.onclick = () => window.open(s.etsy, "_blank");
 
     stickerGallery.appendChild(img);
@@ -147,7 +145,6 @@ if (featured.length > 0) {
     renderSticker(currentSticker);
   }
 
-  // Auto rotate every 4 seconds
   function startAutoRotate() {
     autoRotate = setInterval(nextSticker, 4000);
   }
@@ -156,7 +153,6 @@ if (featured.length > 0) {
     clearInterval(autoRotate);
   }
 
-  // Buttons
   document.getElementById("nextFeaturedSticker").onclick = () => {
     stopAutoRotate();
     nextSticker();
@@ -169,12 +165,9 @@ if (featured.length > 0) {
     startAutoRotate();
   };
 
-  // Start
   renderSticker(currentSticker);
   startAutoRotate();
 </script>
-
-
 
 </body>
 </html>
