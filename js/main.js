@@ -260,21 +260,70 @@ let currentLang = "en";
 function applyLanguage(lang) {
   const t = window.LANG[lang];
 
-  document.getElementById("heroTitle").textContent = t.heroTitle;
-  document.getElementById("heroSub").textContent = t.heroSub;
-  document.getElementById("watchVideos").textContent = t.watchVideos;
-  document.getElementById("visitShop").textContent = t.visitShop;
-  document.getElementById("featuredVideos").textContent = t.featuredVideos;
-  document.getElementById("featuredStickers").textContent = t.featuredStickers;
+  // NAV
+  if (document.getElementById("navHome")) {
+    document.getElementById("navHome").textContent = t.navHome;
+    document.getElementById("navVideos").textContent = t.navVideos;
+    document.getElementById("navShop").textContent = t.navShop;
+    document.getElementById("navAbout").textContent = t.navAbout;
+    document.getElementById("navContact").textContent = t.navContact;
+    document.getElementById("navSupport").textContent = t.navSupport;
+  }
+
+  // HOME
+  if (document.getElementById("heroTitle")) {
+    document.getElementById("heroTitle").textContent = t.heroTitle;
+    document.getElementById("heroSub").textContent = t.heroSub;
+    document.getElementById("watchVideos").textContent = t.watchVideos;
+    document.getElementById("visitShop").textContent = t.visitShop;
+    document.getElementById("featuredVideos").textContent = t.featuredVideos;
+    document.getElementById("featuredStickers").textContent = t.featuredStickers;
+  }
+
+  // VIDEOS PAGE
+  if (document.getElementById("videosTitle")) {
+    document.getElementById("videosTitle").textContent = t.videosTitle;
+    document.getElementById("videosDesc").textContent = t.videosDesc;
+  }
+
+  // SHOP PAGE
+  if (document.getElementById("shopTitle")) {
+    document.getElementById("shopTitle").textContent = t.shopTitle;
+    document.getElementById("shopDesc").textContent = t.shopDesc;
+  }
+
+  // ABOUT PAGE
+  if (document.getElementById("aboutTitle")) {
+    document.getElementById("aboutTitle").textContent = t.aboutTitle;
+    document.getElementById("aboutBio").textContent = t.aboutBio;
+    document.getElementById("aboutOrigin").textContent = t.aboutOrigin;
+  }
+
+  // CONTACT PAGE
+  if (document.getElementById("contactTitle")) {
+    document.getElementById("contactTitle").textContent = t.contactTitle;
+    document.getElementById("contactDesc").textContent = t.contactDesc;
+  }
+
+  // SUPPORT PAGE
+  if (document.getElementById("supportTitle")) {
+    document.getElementById("supportTitle").textContent = t.supportTitle;
+    document.getElementById("supportDesc").textContent = t.supportDesc;
+    document.getElementById("supportChecklist").textContent = t.supportChecklist;
+  }
 }
 
 document.getElementById("langToggle").addEventListener("click", () => {
   currentLang = currentLang === "en" ? "es" : "en";
+
+  const flag = document.getElementById("langFlag");
+  flag.src = currentLang === "en" ? "img/flag_es.svg" : "img/flag_en.svg";
+
   document.getElementById("langToggle").textContent = currentLang === "en" ? "ES" : "EN";
+  document.getElementById("langToggle").prepend(flag);
+
   applyLanguage(currentLang);
 });
 
 // Apply default language on load
 applyLanguage(currentLang);
-
-
