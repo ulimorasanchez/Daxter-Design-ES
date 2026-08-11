@@ -254,3 +254,27 @@ function confettiBurst(x, y){
 
 document.addEventListener("DOMContentLoaded", () => { initNav(); injectBgBlobs(); });
 
+/* ---------------- BUTTON LANGUAGE ---------------- */
+let currentLang = "en";
+
+function applyLanguage(lang) {
+  const t = window.LANG[lang];
+
+  document.getElementById("heroTitle").textContent = t.heroTitle;
+  document.getElementById("heroSub").textContent = t.heroSub;
+  document.getElementById("watchVideos").textContent = t.watchVideos;
+  document.getElementById("visitShop").textContent = t.visitShop;
+  document.getElementById("featuredVideos").textContent = t.featuredVideos;
+  document.getElementById("featuredStickers").textContent = t.featuredStickers;
+}
+
+document.getElementById("langToggle").addEventListener("click", () => {
+  currentLang = currentLang === "en" ? "es" : "en";
+  document.getElementById("langToggle").textContent = currentLang === "en" ? "ES" : "EN";
+  applyLanguage(currentLang);
+});
+
+// Apply default language on load
+applyLanguage(currentLang);
+
+
